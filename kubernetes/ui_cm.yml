@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: phonebookui-config
+  labels:
+    app: phonebook
+    component: ui
+data:
+  env-config.js: |
+    window._env_ = {
+      API_URL: "http://phonebookapi-phonebook.apps.172.16.249.200.nip.io",
+    }

@@ -1,0 +1,42 @@
+html {
+  background-image:url(./images/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%
+}
+
+body {
+color:black;
+height:100%
+}
+
+div.header {
+  height: 100px;
+  font-size: 80px;
+  font: Arial;
+  font-weight: bold;
+  color: white;
+  width: 100%;
+  text-align: center;
+}
+
+div.footer {
+  background-color: black;
+  color: white;
+  position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   height: 20px;
+}
+
+div.content {
+  height : auto;
+}
+
+div.mycentre {
+
+}
+
+.link {margin: 5px;color:white;}
+.link:hover{margin: 5px;color:blue;}
