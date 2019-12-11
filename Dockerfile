@@ -29,7 +29,7 @@ WORKDIR /usr/share/nginx/html
 #COPY .env .
 
 # Add bash
-RUN apk add --no-cache bash
+#RUN apk add --no-cache bash
 
 # Make our shell script executable
 #RUN chmod +x env.sh
@@ -41,4 +41,4 @@ RUN apk add --no-cache bash
 #USER appuser
 # Start Nginx server
 #CMD ["/bin/bash", "-c", "/usr/share/nginx/html/env.sh && nginx -g \"daemon off;\""]
-CMD ["/bin/bash", "-c", "nginx -g \"daemon off;\""]
+#CMD ["/bin/bash", "-c", "nginx -g \"daemon off;\""]
