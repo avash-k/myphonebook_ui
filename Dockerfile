@@ -31,13 +31,13 @@ RUN apk add --no-cache bash
 
 # Make our shell script executable
 #RUN chmod +x env.sh
+RUN chmod g+rwx /var/cache/nginx /var/run /var/log/nginx
+#RUN adduser -S -D -H -h /app appuser
+#RUN touch /var/run/nginx.pid && \
+#  chown -R appuser /var/run/nginx.pid && \
+#  chown -R appuser /var/cache/nginx
 
-RUN adduser -S -D -H -h /app appuser
-RUN touch /var/run/nginx.pid && \
-  chown -R appuser /var/run/nginx.pid && \
-  chown -R appuser /var/cache/nginx
-
-USER appuser
+#USER appuser
 # Start Nginx server
 #CMD ["/bin/bash", "-c", "/usr/share/nginx/html/env.sh && nginx -g \"daemon off;\""]
 CMD ["/bin/bash", "-c", "nginx -g \"daemon off;\""]

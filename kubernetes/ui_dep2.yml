@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phonebookui
+spec:
+  selector:
+    matchLabels:
+      app: phonebook
+      component: ui
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: phonebook
+        component: ui
+    spec:
+      containers:
+        - name: phonebookui
+          image: docker-registry.default.svc:5000/myphonebook/myphonebook_ui:latest
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: app-configs
+              mountPath: /usr/share/nginx/html/config
+              # Load the configuration files for nginx
+      volumes:
+        - name: app-configs
+          configMap:
+            name: phonebookui-config
