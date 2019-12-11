@@ -8,7 +8,9 @@ COPY . .
 RUN yarn build
 
 # => Run container
-FROM nginx:1.15.2-alpine
+FROM nginx:stable
+
+RUN chmod g+rwx /var/cache/nginx /var/run /var/log/nginx
 
 # Nginx config
 RUN rm -rf /etc/nginx/conf.d
@@ -31,7 +33,6 @@ RUN apk add --no-cache bash
 
 # Make our shell script executable
 #RUN chmod +x env.sh
-RUN chmod g+rwx /var/cache/nginx /var/run /var/log/nginx
 #RUN adduser -S -D -H -h /app appuser
 #RUN touch /var/run/nginx.pid && \
 #  chown -R appuser /var/run/nginx.pid && \
