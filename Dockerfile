@@ -10,7 +10,7 @@ RUN yarn build
 # => Run container
 FROM nginx:stable
 
-RUN chmod g+rwx /var/cache/nginx /var/run /var/log/nginx
+RUN chmod 777 /var/cache/nginx /var/run /var/log/nginx
 
 # Nginx config
 RUN rm -rf /etc/nginx/conf.d
