@@ -9,22 +9,26 @@ RUN yarn build
 
 # => Run container
 FROM nginx:stable
+RUN chmod g+rwx /var/cache/nginx /var/run /var/log/nginx
+RUN sed -i.bak 's/listen\(.*\)80;/listen 8080;/' /etc/nginx/conf.d/default.conf
+EXPOSE 8080
+RUN sed -i.bak 's/^user/#user/' /etc/nginx/nginx.conf
 
-RUN chmod 777 /var/cache/nginx /var/run /var/log/nginx
+#RUN chmod 777 /var/cache/nginx /var/run /var/log/nginx
 
 # Nginx config
-RUN rm -rf /etc/nginx/conf.d
-COPY conf /etc/nginx
+#RUN rm -rf /etc/nginx/conf.d
+#COPY conf /etc/nginx
 
 # Static build
 COPY --from=builder /app/build /usr/share/nginx/html/
 RUN mkdir -p /app/build /usr/share/nginx/html/config
 
 # Default port exposure
-EXPOSE 8080
+#EXPOSE 8080
 
 # Copy .env file and shell script to container
-WORKDIR /usr/share/nginx/html
+#WORKDIR /usr/share/nginx/html
 #COPY ./env.sh .
 #COPY .env .
 
