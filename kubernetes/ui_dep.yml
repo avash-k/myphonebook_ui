@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: phonebookui
-          image: docker-registry.default.svc:5000/test/phonebook_ui:latest
+          image: docker-registry.default.svc:5000/myphonebook/phonebook_ui:latest
           imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 8080
